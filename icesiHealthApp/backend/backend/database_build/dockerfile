@@ -1,0 +1,10 @@
+FROM couchdb:latest
+
+# Copia el archivo custom.ini en el directorio de configuración de CouchDB
+COPY local.ini /opt/couchdb/etc/local.d/
+
+# Cambia los permisos y el propietario del archivo local.ini
+RUN chown couchdb:couchdb /opt/couchdb/etc/local.ini && chmod 777 /opt/couchdb/etc/local.ini
+
+# Expone el puerto 5984
+EXPOSE 5984
